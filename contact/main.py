@@ -3,9 +3,9 @@
 #finename:main.py
 import pymysql
 connect = pymysql.connect(
-    host='192.168.70.3',
-    user='root',
-    passwd='10086130',
+    host='xxxxx',
+    user='xxxx',
+    passwd='xxxx',
     db='contacts',
     port=3306
    # charset='utf-8'
