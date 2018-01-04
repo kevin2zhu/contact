@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
+<<<<<<< HEAD
 #filename main.py
 class User_info():
     '''创建一个用户信息的类'''
@@ -29,5 +30,19 @@ class User_info():
         #for k,v in self.users_info.items():
         #    print(k,v)
         return self.users_info
+=======
+#finename:main.py
+import pymysql
+connect = pymysql.connect(
+    host='xxxxx',
+    user='xxxx',
+    passwd='xxxx',
+    db='contacts',
+    port=3306
+   # charset='utf-8'
+)
+
+conn = connect.cursor()  #创建操作游标
+>>>>>>> 6f6e2c995faa490f787a2456d9fff8ea1c103f7b
 
 
