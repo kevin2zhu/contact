@@ -1,9 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> origin/master
 #filename main.py
 class User_info():
     '''创建一个用户信息的类'''
@@ -26,23 +22,9 @@ class User_info():
     
     def storge_user(self):
         #存储用户信息
-<<<<<<< HEAD
-        self.users_info['name'] = str(self.name)
+        self.users_info['name'] = self.name
         self.users_info['phone'] = self.phone
-        if self.other:
-            self.users_info['other'] = self.other
-=======
-        self.users_info['姓名:'] = self.name
-        self.users_info['电话号码:'] = self.phone
-        if self.other:
-            self.users_info['其他信息:'] = self.other
->>>>>>> origin/master
         #for k,v in self.users_info.items():
         #    print(k,v)
         return self.users_info
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> origin/master

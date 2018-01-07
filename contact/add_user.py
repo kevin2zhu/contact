@@ -8,7 +8,6 @@ my = User_info()
 my.add_user()
 result = my.storge_user()
 
-<<<<<<< HEAD
 my_db = Use_database('192.168.1.40','root','10086130','contacts',3306)
 id_num = my_db.use_db()
 insertsql = "INSERT INTO user(id,name,phone)\
@@ -17,7 +16,3 @@ insertsql = "INSERT INTO user(id,name,phone)\
 my_db.insert_table(insertsql)
 #else:
 #    my_db.insert_table(id_num + 1,result['name'],result['phone'])
-=======
-for k,v in result.items():
-    print(k,v)
->>>>>>> origin/master
