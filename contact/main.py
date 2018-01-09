@@ -1,12 +1,13 @@
-#!/usr/bin/env python3
+#/usr/bin/env python3
 # -*- coding:utf-8 -*-
 # filename main.py
 from contact_database import *
 from user_info import User_info
 
-my = User_info()
-my.add_user()
-info = my.storge_user()
+def use_database():
+    my = User_info()
+    my.add_user()
+    info = my.storge_user()
 
 my_db = Use_database('192.168.70.3', 'root', '10086130', 'contacts', 3306)
 num = my_db.use_db()

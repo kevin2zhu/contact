@@ -25,11 +25,22 @@ class Use_database():
             self.port
         )
         return connect
-
+    
+    def display_name(self):
+        #打开程序显示当前存储的用户名
+        connect = self.connect_db()
+        cur = connect.cursor()
+        cur.execute('SELECT * FROM user')
+        rows = cur.fetchall()
+        if rows:
+            for i in rows:
+                print('姓名:%s'% i[1])
+        else:
+            print('当前通讯录中无任何用户!')
+    
     def use_db(self):
         # 使用数据库中的数据
         connect = self.connect_db()
-
         cur = connect.cursor()
         cur.execute('USE contacts')  # 使用游标+execute执行SQL命令
         cur.execute('SELECT * FROM user')
@@ -40,7 +51,7 @@ class Use_database():
             return row[0][0]
         else:
             return 0
-
+    
     def insert_table(self, sql):
         '''插入用户信息表'''
         conn = self.connect_db()
