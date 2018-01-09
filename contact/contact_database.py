@@ -37,10 +37,8 @@ class Use_database():
         # fetchall()接收全部的返回结果行，若没有则返回的是表的内容个数 int型
         if rows:
             row = [i for i in rows]
-            print(row[0])
-            return row[0]
+            return row[0][0]
         else:
-            print('此表为空!')
             return 0
 
     def insert_table(self, sql):
@@ -52,6 +50,5 @@ class Use_database():
             conn.commit()
             conn.close()
         except Exception:
-            print('发生异常', Exception)
-            conn.rollback()
-            conn.close()
+
+            conn.close() 
