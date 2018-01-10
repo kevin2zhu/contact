@@ -17,15 +17,28 @@ class Use_database():
 
     def connect_db(self):
         # 连接数据库
-        connect = pymysql.connect(
+        self.connect = pymysql.connect(
             self.host,
             self.user,
             self.passwd,
             self.dbname,
             self.port
         )
-        return connect
-    
+        return self.connect
+
+    def show_database(self):
+        #展示数据库中的数据
+        connect = self.connect_db()
+        cur = connect.cursor()
+        cur.execute('SELECT * FROM user')
+        rows = cur.fetchall()
+        if rows:
+            for i in rows:
+                print('姓名:%s'% i[1])
+        else:
+            print('暂无用户信息!')
+        connect.close()
+
     def display_name(self):
         #打开程序显示当前存储的用户名
         connect = self.connect_db()
@@ -37,7 +50,7 @@ class Use_database():
                 print('姓名:%s'% i[1])
         else:
             print('当前通讯录中无任何用户!')
-    
+
     def use_db(self):
         # 使用数据库中的数据
         connect = self.connect_db()
@@ -51,7 +64,7 @@ class Use_database():
             return row[0][0]
         else:
             return 0
-    
+
     def insert_table(self, sql):
         '''插入用户信息表'''
         conn = self.connect_db()
@@ -62,4 +75,6 @@ class Use_database():
             conn.close()
         except Exception:
 
-            conn.close() 
+            conn.close()
+
+
