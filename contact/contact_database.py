@@ -74,7 +74,7 @@ class Use_database():
             conn.commit()
             conn.close()
         except Exception:
-
+            print('Something Error!')
             conn.close()
 
 
