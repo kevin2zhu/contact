@@ -5,7 +5,7 @@ from contact_database import *
 from user_info import User_info
 
 def conn_db():
-    my_db = Use_database('192.168.70.3', 'root', '10086130', 'contacts', 3306)
+    my_db = Use_database('localhost', 'root', '10086130', 'contacts', 3306)
     return my_db
     
 def use_db():
@@ -19,7 +19,7 @@ def use_db():
     return id_num
 
 
-def user_info():
+def user_add():
     my_db = conn_db()
     id_num = use_db()
     my = User_info()
@@ -38,4 +38,23 @@ def user_info():
 def show_db():
     my_db = conn_db()
     my_db.show_database()
+
+show_db()
+
+#answer = input('是否需要新增用户信息(yes/no或者y/n):\n')
+#print(answer)
+
+#if ans == 'yes' or ans == 'y'
+#    print('yes!')
+#else:
+#    print('Oh,No!')
+ans = input('是否需要新增用户信息(yes/no或者y/n):\n')
+while True:
+    if ans == 'yes' or ans == 'y':
+        user_add()
+    elif ans == 'no' or ans == 'n':
+        print('Bye Bye')
+        break
+    else:
+        ans = input('请输入yes/no或者y/n.\n:')
 
