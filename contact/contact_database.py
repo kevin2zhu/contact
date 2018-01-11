@@ -26,30 +26,6 @@ class Use_database():
         )
         return self.connect
 
-    def show_database(self):
-        #展示数据库中的数据
-        connect = self.connect_db()
-        cur = connect.cursor()
-        cur.execute('SELECT * FROM user')
-        rows = cur.fetchall()
-        if rows:
-            for i in rows:
-                print('姓名:%s'% i[1])
-        else:
-            print('暂无用户信息!')
-        connect.close()
-
-    def display_name(self):
-        #打开程序显示当前存储的用户名
-        connect = self.connect_db()
-        cur = connect.cursor()
-        cur.execute('SELECT * FROM user')
-        rows = cur.fetchall()
-        if rows:
-            for i in rows:
-                print('姓名:%s'% i[1])
-        else:
-            print('当前通讯录中无任何用户!')
 
     def use_db(self):
         # 使用数据库中的数据
@@ -60,10 +36,21 @@ class Use_database():
         rows = cur.fetchall()
         # fetchall()接收全部的返回结果行，若没有则返回的是表的内容个数 int型
         if rows:
-            row = [i for i in rows]
-            return row[0][0]
+            return rows[-1][0]
         else:
             return 0
+    def show_database(self):
+        #展示数据库中的数据
+        connect = self.connect_db()
+        cur = connect.cursor()
+        cur.execute('SELECT * FROM user')
+        rows = cur.fetchall()
+        if rows:
+            for row in rows:
+                print('姓名:%s'% row[1])
+        else:
+            print('抱歉,暂无用户信息!')
+        connect.close()
 
     def insert_table(self, sql):
         '''插入用户信息表'''
@@ -74,7 +61,8 @@ class Use_database():
             conn.commit()
             conn.close()
         except Exception:
-            print('Something Error!')
+            print('用户增加失败请重试!')
             conn.close()
 
-
+#my_db = Use_database('localhost','root','10086130','contacts',3306)
+#my_db.show_database()
