@@ -19,7 +19,6 @@ class User_info():
         self.phone = input('请输入电话号码:')
         self.address = input('请输入地址,如不输入则默认为空:\n:')
         self.other = input('如果还有其他信息请继续输入,如:性别=女.."\n:')
-        print('信息录入成功!\n') 
     
     def storge_user(self):
         #存储用户信息

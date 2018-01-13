@@ -18,7 +18,6 @@ def use_db():
         id_num = num + 1
     return id_num
 
-
 def user_add():
     my_db = conn_db()
     id_num = use_db()
@@ -26,17 +25,30 @@ def user_add():
     my.add_user()
     info = my.storge_user()
     #判断是否输入其他信息,来选择插入哪条数据
-    if 'other' in info:
-        yes_othersql = "INSERT INTO user(id,name,phone,address,other) values('%s','%s','%s','%s','%s')" %(
+    if info['name'] and info['phone']:
+        if 'other' in info:
+            yes_othersql = "INSERT INTO user(id,name,phone,address,other) values('%s','%s','%s','%s','%s')" %(
             id_num, info['name'], info['phone'],info['address'],info['other'])
-        my_db.insert_table(yes_othersql)
+            my_db.insert_table(yes_othersql)
+        else:
+            no_othersql = "INSERT INTO user(id,name,phone,address) values('%s','%s','%s','%s')" % (
+                id_num, info['name'], info['phone'],info['address'])
+            my_db.insert_table(no_othersql)
     else:
-        no_othersql = "INSERT INTO user(id,name,phone,address) values('%s','%s','%s','%s')" % (
-            id_num, info['name'], info['phone'],info['address'])
-        my_db.insert_table(no_othersql)
+        print('用户添加失败,请输入必要的信息!')
 
 def show_db():
     my_db = conn_db()
-    print('当前用户信息有:')
-    my_db.show_database()
+    print('当前用户有:')
+    my_db.show_userinfo()
+
+def search_user(name):
+    my_db = conn_db()
+    my_db.search_db(name)
+
+def userlist():
+    my_db = conn_db()
+    user = my_db.show_userinfo()
+    return user
+
 
