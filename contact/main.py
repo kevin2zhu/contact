@@ -5,7 +5,7 @@ from contact_database import *
 from user_info import User_info
 
 def conn_db():
-    my_db = Use_database('192.168.1.40', 'root', '10086130', 'contacts', 3306)
+    my_db = Use_database('localhost', 'root', '10086130', 'contacts', 3306)
     return my_db
     
 def use_db():
